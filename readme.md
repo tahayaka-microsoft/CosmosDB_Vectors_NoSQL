@@ -18,12 +18,58 @@
     - ベクトルインデックスがなければ全検索(ブルートフォース)で検索する。
   - ベクトルインデックスの種類  
     - Flat
-    - Quantized Flat
-    - DiskANNl
+      - そのまま格納する。その場合ベクトルインデックスのサイズが大きいため、*505次元までしか格納できない*ので注意。
+    - Quantized Flat(量子化Flat)
+      - 量子化(圧縮)して格納する。量子化されたベクトルはサイズが小さくなるため、4096次元まで格納できるようになる。
+    - DiskANN
+      - 量子化と最適なRAM/SSD配置方式をあわせた、Microsoft独自の近似近傍検索(ANN)技法が使えるインデックス。4096次元まで対応。
+      - Public Preview中で、CosmosDBの「機能」メニューからONにすることで利用が可能となる。
 
   - ベクトルインデックスの作成
     - インデックスポリシー
+      インデックス生成に関するポリシー。ベクトル検索機能搭載以前でも存在したが、ベクトル項目の定義が追加された
+      - "path": ベクトル項目
+      - "type": "flat","quantizedFlat","diskANN"より選択
+      ```JSON
+      {
+        "indexingMode": "consistent",
+        "automatic": True,
+        "includedPaths": [
+            {
+                "path": "/*"
+            }
+        ],
+        "excludedPaths": [
+            {
+                "path": "/\"_etag\"/?"
+            }
+        ],
+        "vectorIndexes": [
+            {
+                "path": "/vectors",
+                "type": "quantizedFlat"
+            }
+        ]
+    }
+      ```
     - ベクトル埋め込みポリシー
+      ベクトル埋め込みの方法に関するポリシー。ベクトル検索の搭載に合わせて新規追加されたポリシー項目。
+      - "path": ベクトルを含むプロパティ パス
+      - "datatype": ベクトルの要素の型 (既定値 Float32)
+      - "distanceFunction": 距離/類似度の計算に使用するメトリック (既定値 Cosine)
+      - "dimensions": パス内の各ベクトルの長さ (既定値 1536)
+      ```JSON
+      {
+        "vectorEmbeddings": [
+            {
+                "path":"/vectors",
+                "dataType":"float32",
+                "distanceFunction":"cosine",
+                "dimensions":1536
+            }
+        ]
+      }
+      ```
 
   - ベクトル検索クエリの発行
     - SQLライククエリで実現
@@ -40,7 +86,10 @@
     `VectorDistance(比較先ベクトル項目(N件),比較元ベクトル(1件))`
 
 - Cosmos DB for NoSQLでベクトル検索を使うための準備
-  <IMG SRC="./assets/01_
+  - Cosmos DB for NoSQL アカウントの作成(すでに作成されている場合はスキップ)
+    <IMG SRC="./assets/01_CosmosDBNoSQLDeploy01.png width=400>
+  - Cosmos DB for NoSQL アカウントのメニューより「機能」を選択肢、"Vector Search for Cosmos DB for NoSQL"をオンにする
+    <IMG SRC="./assets/02_CosmosDBNoSQLEnableVector.png" width=400>
 
 
 - CosmosDB for NoSQLでのベクトルデータの管理
