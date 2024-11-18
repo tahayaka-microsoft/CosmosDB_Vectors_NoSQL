@@ -113,14 +113,26 @@
 ### ベクトルデータの格納
 
 - 環境準備
-    
+
+  - Azure Cloud Shellの起動と設定
+    - ポータルの右上、Cloud Shellのアイコンを押す
+    <IMG SRC="./assets/06_CloudShell_Button.png" width=400>
+    - "Bash"を選択  
+    <IMG SRC="./assets/07_CloudShell_Welcome.png" width=400>  
+    - サブスクリプションをえらんで「適用」を選択  
+    <IMG SRC="./assets/08_CloudShell_StartingTasks.png" width=400>  
+    - プロンプトが表示されたら起動完了
+    <IMG SRC="./assets/09_CloudShell_Success.png" width=400>
+    - `git clone https://github.com/tahayaka-microsoft/CosmosDB_Vectors_NoSQL/` を実行する
+    - `cd CosmosDB_Vectors_NoSQL`でディレクトリを移動する 
+
   - Pythonライブラリの導入
     - `azure-cosmos`,`openai`,`langchain`を必要に応じて`pip install`を用いてインストールする
+      - `pip install azure-cosmos openai langchain`を実行する  
     - IDE(VSCode,Spyder,Jupyter)を利用する場合は`nest_asyncio`をインストールする
   - テストデータのダウンロードと解凍
-    - 任意の場所にて以下を実行する
+    - `/home/(ユーザー名)/CosmosDB_Vectors_NoSQL/`にて以下を実行する
       ```sh
-      wget https://github.com/tahayaka-microsoft/CosmosDB_Vectors_NoSQL/raw/main/assets/test1000.tar
       tar -xvf test1000.tar
       ```
       `test1000`ディレクトリのパスを記録する(サンプルアプリの書き換えに利用する) `pwd`等を用いる
@@ -131,15 +143,18 @@
     - OPENAI_KEY
     - COSMOSDB_URI
     - COSMOSDB_KEY
-  - bashの場合は `set 変数名=値`
+  - bashの場合は `export 変数名=値`で記述
+    - `env.sh`に記述して`. ./env.sh`にて反映する。
     ```sh
-    set OPENAI_URI=
-    set OPENAI_KEY=
-    set COSMOSDB_URI=
-    set COSMOSDB_KEY=
+    #!/bin/sh
+    
+    export OPENAI_URI=
+    export OPENAI_KEY=
+    export COSMOSDB_URI=
+    export COSMOSDB_KEY=
     ``` 
 
-  - main()ループのglob.globのディレクトリ名称(113行目の`'/home/xxxx/test1000/*.txt'`)を`test1000`ディレクトリのパスに変更する。
+  - main()ループのglob.globのディレクトリ名称(113行目の`'/home/xxxx/test1000/*.txt'`)を`test1000`ディレクトリのパスに変更する。`/home/admin/CosmosDB_Vectors_NoSQL/test1000/*.txt`のようにする。
   - `python 01_vectorize.py`で実行する
 
 ### ベクトル検索の実行
