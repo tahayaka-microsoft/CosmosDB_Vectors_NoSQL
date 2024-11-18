@@ -73,7 +73,7 @@
 
   - ベクトル検索クエリの発行
     - SQLライククエリで実現
-      - 検索対象のベクトル配列と、データの中でベクトルインデックスがはられている項目名を指定する
+      - `VectorDistance(ベクトル1,ベクトル2))` : データの中でベクトルインデックスがはられている項目名と、検索対象のベクトル配列をそれぞれ引数に指定する
       - TOP Nで上位いくつまでを指定
       ```SQL
       SELECT TOP 2 c.id, c.name, c.num, 
@@ -82,8 +82,6 @@
       FROM c
       ORDER BY VectorDistance(c.vectors, @vector)
       ```
-
-    `VectorDistance(比較先ベクトル項目(N件),比較元ベクトル(1件))`
 
 - Cosmos DB for NoSQLでベクトル検索を使うための準備
   - Cosmos DB for NoSQL アカウントの作成(すでに作成されている場合はスキップ)
