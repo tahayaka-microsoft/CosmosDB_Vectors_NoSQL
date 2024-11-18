@@ -110,7 +110,7 @@ async def main():
     print(f"Container '{collection_name}' created with DiskANN index.")
 
     # ファイルを処理して埋め込みを保存
-    files = glob.glob('/home/xxxx/test1000/*.txt')
+    files = glob.glob('/home/xxxx/test1000/*.txt') # Set your /home path in the CloudShell
     files.sort()
     files = files[0:100]  # Only 100 files
 
