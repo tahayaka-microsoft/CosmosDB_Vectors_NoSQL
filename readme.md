@@ -87,11 +87,17 @@
 
 - Cosmos DB for NoSQLでベクトル検索を使うための準備
   - Cosmos DB for NoSQL アカウントの作成(すでに作成されている場合はスキップ)
-    <IMG SRC="./assets/01_CosmosDBNoSQLDeploy01.png width=400>
-  - Cosmos DB for NoSQL アカウントのメニューより「機能」を選択肢、"Vector Search for Cosmos DB for NoSQL"をオンにする
+    <IMG SRC="./assets/01_CosmosDBNoSQLDeploy01.png" width=400>
+  - Cosmos DB for NoSQL アカウントのメニューより「機能」を選択肢、"Vector Search for NoSQL API"をオンにする
     <IMG SRC="./assets/02_CosmosDBNoSQLEnableVector.png" width=400>
 
-
+- Embeddingを使うためのAzure OpenAIの設定(設定済の場合はスキップ)
+  - ポータルからAzure OpenAIアカウントを開き、Azure OpenAI Studioを開く
+  - 「モデルのデプロイ」を選択
+    <IMG SRC="./assets/03_OpenAI_ModelSelect01.png" width=400>
+  - "text-embedding-ada-002"を選択
+    <IMG SRC="./assets/04_OpenAI_ModelSelect02.png" width=400>
+    
 - CosmosDB for NoSQLでのベクトルデータの管理
   1. コンテナーに対してベクトルインデックスを設定する
     - *ベクトル関連設定はコンテナー作成時のみ*なので注意
@@ -131,6 +137,7 @@
     - OPENAI_KEY
     - COSMOSDB_URI
     - COSMOSDB_KEY
+  - bashの場合は `set 変数名=値`
 
   - main()ループのglob.globのディレクトリ名称(85行目の`'/home/xxxx/test1000/*.txt'`)を`test1000`ディレクトリのパスに変更する。
   - `python 01_vectorize.py`で実行する
