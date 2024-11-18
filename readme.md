@@ -2,6 +2,14 @@
 
 # CosmosDBでのベクトル検索 実践編 <BR> (Azure Cosmos DB for NoSQL)
 
+  ## Cosmos DB for NoSQLについての概略
+  - Azureにおける分散型NoSQLデータストア
+  - JSONを利用したスキーマレス(項目の事前定義必要なし)なドキュメントを分散システムで高速に取り扱う
+  - アプリのログ、生成AIとのやり取りのログなどの格納に便利
+  - OpenAI ChatGPTやMicrosoft Teamsのバックエンドとして活躍
+  - 全世界のデータセンター全てに存在し、マルチマスター書き込みなどにも対応
+  - SLA99.999%、99%のデータ読み込みを<10msと定義する堅牢かつ高速なデータストア
+
   ## Cosmos DB for NoSQLのベクトルデータの取り扱い
 
 - ベクトルデータ関連機能
@@ -32,7 +40,7 @@
     `VectorDistance(比較先ベクトル項目(N件),比較元ベクトル(1件))`
 
 - Cosmos DB for NoSQLでベクトル検索を使うための準備
-
+  <IMG SRC="./assets/01_
 
 
 - CosmosDB for NoSQLでのベクトルデータの管理
