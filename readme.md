@@ -86,7 +86,7 @@
 - Cosmos DB for NoSQLでベクトル検索を使うための準備
   - Cosmos DB for NoSQL アカウントの作成(すでに作成されている場合はスキップ)
     <IMG SRC="./assets/01_CosmosDBNoSQLDeploy01.png" width=400>  
-  - Cosmos DB for NoSQL アカウントのメニューより「機能」を選択肢、"Vector Search for NoSQL API"をオンにする
+  - Cosmos DB for NoSQL アカウントのメニューより「機能」を選択肢、"Vector Search for NoSQL API"をオンにする  
     <IMG SRC="./assets/02_CosmosDBNoSQLEnableVector.png" width=400>  
 
 - Embeddingを使うためのAzure OpenAIの設定(設定済の場合はスキップ)
