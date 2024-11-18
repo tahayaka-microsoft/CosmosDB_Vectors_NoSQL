@@ -21,13 +21,13 @@
     - SQLライククエリで実現
       - 検索対象のベクトル配列と、データの中でベクトルインデックスがはられている項目名を指定する
       - TOP Nで上位いくつまでを指定
-    ```SQL
-    SELECT TOP 2 c.id, c.name, c.num, 
-    VectorDistance(c.vectors, @vector) AS similarity,
-    c.text
-    FROM c
-    ORDER BY VectorDistance(c.vectors, @vector)
-    ```
+      ```SQL
+      SELECT TOP 2 c.id, c.name, c.num, 
+      VectorDistance(c.vectors, @vector) AS similarity,
+      c.text
+      FROM c
+      ORDER BY VectorDistance(c.vectors, @vector)
+      ```
 
     `VectorDistance(比較先ベクトル項目(N件),比較元ベクトル(1件))`
 
@@ -52,10 +52,10 @@
 - 環境準備
   - Azure OpenAI Serviceの準備
     - `text-embedding-ada-002`をデプロイしておく(可能であればデプロイ名は"embedding01"に)
-    <IMG SRC="https://github.com/tahayaka-microsoft/CosmosDB_Vectors/assets/OpenAI_Embedding_Deploy.png" width=400>
+    <IMG SRC="https://github.com/tahayaka-microsoft/CosmosDB_Vectors/tree/main/assets/OpenAI_Embedding_Deploy.png" width=400>
     
     - Azure OpenAI Serviceの"キーとエンドポイント"から`キー1`と`エンドポイント`の値を控えておく
-    <IMG SRC="https://github.com/tahayaka-microsoft/CosmosDB_Vectors/assets/OpenAI_Keys.png" width=400>
+    <IMG SRC="https://github.com/tahayaka-microsoft/CosmosDB_Vectors/tree/main/assets/OpenAI_Keys.png" width=400>
     
   - Pythonライブラリの導入
     - `azure-cosmos`,`openai`,`langchain`を必要に応じて`pip install`を用いてインストールする
