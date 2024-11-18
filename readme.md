@@ -92,10 +92,10 @@
 - Embeddingを使うためのAzure OpenAIの設定(設定済の場合はスキップ)
   - ポータルからAzure OpenAIアカウントを開き、Azure OpenAI Studioを開く
 
-  - 「モデルのデプロイ」を選択
+  - 「モデルのデプロイ」を選択  
     <IMG SRC="./assets/03_OpenAI_ModelSelect01.png" width=400>  
 
-  - "text-embedding-ada-002"を選択
+  - "text-embedding-ada-002"を選択  
     <IMG SRC="./assets/04_OpenAI_ModelSelect02.png" width=400>  
     
 - CosmosDB for NoSQLでのベクトルデータの管理
