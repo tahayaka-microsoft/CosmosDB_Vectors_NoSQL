@@ -125,7 +125,7 @@
       ```
       `test1000`ディレクトリのパスを記録する(サンプルアプリの書き換えに利用する) `pwd`等を用いる
 
-- サンプルアプリ(01_vectorize.py[./01_vectorize.py])
+- サンプルアプリ([01_vectorize.py](./01_vectorize.py))
   - 以下の環境変数を設定する。
     - OPENAI_URI
     - OPENAI_KEY
@@ -144,7 +144,7 @@
 
 ### ベクトル検索の実行
 
-- サンプルアプリ(02_search.py[./02_search.py])
+- サンプルアプリ([02_search.py](./02_search.py))
   - `python 02_search.py`で実行する
   - 検索したいテキストを入力する
 
