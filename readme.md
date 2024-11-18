@@ -116,15 +116,15 @@
 
   - Azure Cloud Shellの起動と設定
     - ポータルの右上、Cloud Shellのアイコンを押す
-    <IMG SRC="./assets/06_CloudShell_Button.png" width=400>
+    <IMG SRC="./assets/06_CloudShell_Button.png" width=400>  
     - "Bash"を選択  
-    <IMG SRC="./assets/07_CloudShell_Welcome.png" width=400>  
+    <IMG SRC="./assets/07_CloudShell_Welcome.png" width=400>   
     - サブスクリプションをえらんで「適用」を選択  
     <IMG SRC="./assets/08_CloudShell_StartingTasks.png" width=400>  
-    - プロンプトが表示されたら起動完了
-    <IMG SRC="./assets/09_CloudShell_Success.png" width=400>
-    - `git clone https://github.com/tahayaka-microsoft/CosmosDB_Vectors_NoSQL/` を実行する
-    - `cd CosmosDB_Vectors_NoSQL`でディレクトリを移動する 
+    - プロンプトが表示されたら起動完了  
+    <IMG SRC="./assets/09_CloudShell_Success.png" width=400>  
+    - `git clone https://github.com/tahayaka-microsoft/CosmosDB_Vectors_NoSQL/` を実行する  
+    - `cd CosmosDB_Vectors_NoSQL`でディレクトリを移動する  
 
   - Pythonライブラリの導入
     - `azure-cosmos`,`openai`,`langchain`を必要に応じて`pip install`を用いてインストールする
