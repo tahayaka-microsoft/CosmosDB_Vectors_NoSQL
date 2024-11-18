@@ -13,36 +13,49 @@
     - Quantized Flat
     - DiskANNl
 
-  
   - ベクトルインデックスの作成
     - インデックスポリシー
     - ベクトル埋め込みポリシー
 
-  - Vector Search
+  - ベクトル検索クエリの発行
     - SQLライククエリで実現
-    - 検索対象のベクトル配列と、データの中でベクトルインデックスがはられている項目名を指定する
-    - TOP Nで上位いくつまでを指定 
+      - 検索対象のベクトル配列と、データの中でベクトルインデックスがはられている項目名を指定する
+      - TOP Nで上位いくつまでを指定
+    ```SQL
+    SELECT TOP 2 c.id, c.name, c.num, 
+    VectorDistance(c.vectors, @vector) AS similarity,
+    c.text
+    FROM c
+    ORDER BY VectorDistance(c.vectors, @vector)
+    ```
 
-- MongoDB vCoreでのベクトルデータの管理
-  1. Mongo DB vCoreのコレクションに対してベクトルインデックスを設定する
-  2. テキストデータを準備する
-  3. テキスト部分をEmbedding APIを適用してベクトルに変換する
-  4. 変換したデータをベクトルとしてMongoDB vCoreに登録する
+    `VectorDistance(比較先ベクトル項目(N件),比較元ベクトル(1件))`
 
-- MongoDB vCoreでのベクトル検索の実施
+- Cosmos DB for NoSQLでベクトル検索を使うための準備
+
+
+
+- CosmosDB for NoSQLでのベクトルデータの管理
+  1. コンテナーに対してベクトルインデックスを設定する
+    - *ベクトル関連設定はコンテナー作成時のみ*なので注意
+  3. テキストデータを準備する
+  4. テキスト部分をEmbedding APIを適用してベクトルに変換する
+  5. 変換したデータをベクトルとしてMongoDB vCoreに登録する
+
+- ベクトル検索の実施
   1. 検索対象となるテキストを得る
   1. テキストをEmbedding APIを適用してベクトルに変換する
-  1. 変換したベクトルとパラメータを設定してMongo DB vCoreを検索する
+  1. 変換したベクトルとパラメータを設定して検索する
 
 ### ベクトルデータの格納
 
 - 環境準備
   - Azure OpenAI Serviceの準備
     - `text-embedding-ada-002`をデプロイしておく(可能であればデプロイ名は"embedding01"に)
-    <IMG SRC="assets/OpenAI_Embedding_Deploy.png" width=400>
+    <IMG SRC="https://github.com/tahayaka-microsoft/CosmosDB_Vectors/assets/OpenAI_Embedding_Deploy.png" width=400>
     
     - Azure OpenAI Serviceの"キーとエンドポイント"から`キー1`と`エンドポイント`の値を控えておく
-    <IMG SRC="assets/OpenAI_Keys.png" width=400>
+    <IMG SRC="https://github.com/tahayaka-microsoft/CosmosDB_Vectors/assets/OpenAI_Keys.png" width=400>
     
   - Pythonライブラリの導入
     - `azure-cosmos`,`openai`,`langchain`を必要に応じて`pip install`を用いてインストールする
