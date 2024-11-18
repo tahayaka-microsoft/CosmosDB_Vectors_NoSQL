@@ -91,8 +91,10 @@
 
 - Embeddingを使うためのAzure OpenAIの設定(設定済の場合はスキップ)
   - ポータルからAzure OpenAIアカウントを開き、Azure OpenAI Studioを開く
+
   - 「モデルのデプロイ」を選択
     <IMG SRC="./assets/03_OpenAI_ModelSelect01.png" width=400>  
+
   - "text-embedding-ada-002"を選択
     <IMG SRC="./assets/04_OpenAI_ModelSelect02.png" width=400>  
     
@@ -111,12 +113,6 @@
 ### ベクトルデータの格納
 
 - 環境準備
-  - Azure OpenAI Serviceの準備
-    - `text-embedding-ada-002`をデプロイしておく(可能であればデプロイ名は"text-embedding-ada-002"に)
-    <IMG SRC="./assets/01_Deploy_Embedding.png" width=400>
-    
-    - Azure OpenAI Serviceの"キーとエンドポイント"から`キー1`と`エンドポイント`の値を控えておく
-    <IMG SRC="./assets/02_OpenAI_Key.png" width=400>
     
   - Pythonライブラリの導入
     - `azure-cosmos`,`openai`,`langchain`を必要に応じて`pip install`を用いてインストールする
@@ -129,22 +125,26 @@
       ```
       `test1000`ディレクトリのパスを記録する(サンプルアプリの書き換えに利用する) `pwd`等を用いる
 
-- サンプルアプリ(01_vectorize.py)
+- サンプルアプリ(01_vectorize.py[./01_vectorize.py])
   - 以下の環境変数を設定する。
     - OPENAI_URI
     - OPENAI_KEY
     - COSMOSDB_URI
     - COSMOSDB_KEY
   - bashの場合は `set 変数名=値`
+    ```sh
+    set OPENAI_URI=
+    set OPENAI_KEY=
+    set COSMOSDB_URI=
+    set COSMOSDB_KEY=
+    ``` 
 
-  - main()ループのglob.globのディレクトリ名称(85行目の`'/home/xxxx/test1000/*.txt'`)を`test1000`ディレクトリのパスに変更する。
+  - main()ループのglob.globのディレクトリ名称(113行目の`'/home/xxxx/test1000/*.txt'`)を`test1000`ディレクトリのパスに変更する。
   - `python 01_vectorize.py`で実行する
-
 
 ### ベクトル検索の実行
 
-- サンプルアプリ(02_search.py)
+- サンプルアプリ(02_search.py[./02_search.py])
   - `python 02_search.py`で実行する
   - 検索したいテキストを入力する
-
 
