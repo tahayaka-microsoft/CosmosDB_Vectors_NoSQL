@@ -1,4 +1,4 @@
-座学テキストは[コチラ](./assets/VectorEssestials.pdf)
+座学テキストは[コチラ](assets/VectorEssentials.pdf)
 
 # CosmosDBでのベクトル検索 実践編 <BR> (Azure Cosmos DB for NoSQL)
 
