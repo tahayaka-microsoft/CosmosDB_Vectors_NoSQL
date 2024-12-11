@@ -66,7 +66,7 @@ async def main():
     except Exception as e:
         print(f"Container '{collection_name}' does not exist or could not be deleted: {e}")
 
-    # DiskANN vector index等を使用してインデックスポリシーを定義
+    # Vector Index等を使用してインデックスポリシーを定義
     indexing_policy = {
         "indexingMode": "consistent",
         "automatic": True,
